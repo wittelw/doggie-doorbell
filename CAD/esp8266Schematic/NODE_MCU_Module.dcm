@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP NodeMCU_ESP-12E
+D ESP-12E 802.11 b/g/n Wi-Fi Module
+K 802.11 Wi-Fi module
+F https://github.com/KiCad/kicad-symbols/pull/1426/files
+$ENDCMP
+#
+#End Doc Library

@@ -1,0 +1,67 @@
+Use systemd and pirsense.service to run PirSense.py as a service
+
+https://www.raspberrypi.org/documentation/linux/usage/systemd.md
+
+mkdir -p /home/pi/Services/PirSense.
+Copy PirSense.py to this directory.
+sudo Copy pirsense.service to /etc/systemd/system/pirsense.service.
+
+sudo systemctl start pirsense.service
+sudo systemctl status pirsense.service
+sudo systemctl stop pirsense.service
+
+to start on boot:
+
+sudo systemctl enable pirsense.service
+
+Also restart and disable commands available.
+
+=============================================
+Using systemd to turn GUI on and off
+
+https://www.computernetworkingnotes.com/linux-tutorials/systemd-target-units-explained.html
+
+See "Switching between different targets" in link. To disable GUI set to "multi-user.target"
+
+For reference before turning off GUI:
+
+Default for installed raspberry pi os desktop
+pi@raspberrypiZero:~/log/pir_sensor $ sudo systemctl get-default
+graphical.target
+
+pi@raspberrypiZero:~/log/pir_sensor $ sudo systemctl list-units --type=target --all
+UNIT                   LOAD   ACTIVE   SUB    DESCRIPTION
+basic.target           loaded active   active Basic System
+bluetooth.target       loaded active   active Bluetooth
+cryptsetup.target      loaded active   active Local Encrypted Volumes
+emergency.target       loaded inactive dead   Emergency Mode
+getty-pre.target       loaded inactive dead   Login Prompts (Pre)
+getty.target           loaded active   active Login Prompts
+graphical.target       loaded active   active Graphical Interface
+local-fs-pre.target    loaded active   active Local File Systems (Pre)
+local-fs.target        loaded active   active Local File Systems
+multi-user.target      loaded active   active Multi-User System
+network-online.target  loaded active   active Network is Online
+network-pre.target     loaded inactive dead   Network (Pre)
+network.target         loaded active   active Network
+nfs-client.target      loaded active   active NFS client services
+nss-user-lookup.target loaded inactive dead   User and Group Name Lookups
+paths.target           loaded active   active Paths
+remote-fs-pre.target   loaded active   active Remote File Systems (Pre)
+remote-fs.target       loaded active   active Remote File Systems
+rescue.target          loaded inactive dead   Rescue Mode
+shutdown.target        loaded inactive dead   Shutdown
+slices.target          loaded active   active Slices
+sockets.target         loaded active   active Sockets
+swap.target            loaded active   active Swap
+sysinit.target         loaded active   active System Initialization
+time-sync.target       loaded active   active System Time Synchronized
+timers.target          loaded active   active Timers
+umount.target          loaded inactive dead   Unmount All Filesystems
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+
+27 loaded units listed.
+

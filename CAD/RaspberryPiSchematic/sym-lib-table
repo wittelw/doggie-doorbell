@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name PirSensor_Library)(type Legacy)(uri ${KIPRJMOD}/PirSensor_Library.lib)(options "")(descr ""))
+)
