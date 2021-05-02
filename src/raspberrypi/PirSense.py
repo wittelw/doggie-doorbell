@@ -49,8 +49,6 @@ powerStates = {
 def publish_light_off():
     if enablePorchLightOff == True:
         publish_mqtt_topic(porchLightPowerTopic, 'OFF')
-    else:
-        logger.debug('enablePorchLightOff != True, NOP')
 
 
 def getPorchLightStatus():
@@ -229,7 +227,6 @@ def loop():
 
         # No PIR state change, but light on timed out
         if lightOnTimeout.timedOut() == True and mqttSwitchStateON == True and (humanOverride == False or humanOverride == None):
-                logger.debug('Turning off light after timeout.')
                 publish_light_off()
                 GPIO.output(grnLedPin,GPIO.LOW)
 
